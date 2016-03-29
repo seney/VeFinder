@@ -1,5 +1,6 @@
 package com.hsns.vefinder;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,9 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    NavigationView mNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +42,12 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.getMenu().getItem(0).setChecked(true);
         replaceFragment(HomeFragment.getHomeFragment());
+
+        loadUserProfile();
     }
 
     @Override
@@ -108,5 +113,11 @@ public class MainActivity extends AppCompatActivity
 
     private void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+    }
+
+    private void loadUserProfile(){
+        SimpleDraweeView imvProfile = (SimpleDraweeView) mNavigationView.getHeaderView(0).findViewById(R.id.imvProfile);
+//        imvProfile.setImageURI(Uri.parse("http://www.allmediany.com/bignails/1343917142_blank.jpg"));
+        imvProfile.setImageURI(Uri.parse("http://designdeedee.net/ca2013/sources/quiz1/ma.jpg"));
     }
 }
