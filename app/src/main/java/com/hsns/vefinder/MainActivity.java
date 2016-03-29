@@ -85,16 +85,16 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             getSupportActionBar().setTitle(R.string.app_name);
-            replaceFragment(HomeFragment.getHomeFragment());
+            replaceFragment(new HomeFragment());
         } else if (id == R.id.nav_my_friends) {
             getSupportActionBar().setTitle(R.string.my_friends);
-            replaceFragment(MyFriendsFragment.getMyFriendsFragment());
+            replaceFragment(new MyFriendsFragment());
         } else if (id == R.id.nav_about) {
             getSupportActionBar().setTitle(R.string.about);
-            replaceFragment(AboutFragment.getAboutFragment());
+            replaceFragment(new AboutFragment());
         } else if (id == R.id.nav_setting) {
             getSupportActionBar().setTitle(R.string.setting);
-            replaceFragment(SettingFragment.getSettingFragment());
+            replaceFragment(new SettingFragment());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
