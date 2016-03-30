@@ -42,5 +42,22 @@ public class AboutFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initEvent();
+    }
+
+    private void initEvent() {
+        mBinding.lnPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: privacy link
+            }
+        });
+
+        mBinding.lnTerm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: term link
+            }
+        });
     }
 }
