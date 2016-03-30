@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.hsns.vefinder.R;
 import com.hsns.vefinder.databinding.FragmentSettingBinding;
+import com.hsns.vefinder.views.activities.MainActivity;
 
 /**
  * Created by SENEY SEAN on 3/29/16.
@@ -42,5 +43,17 @@ public class SettingFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        initEvent();
+    }
+
+    private void initEvent() {
+        mBinding.btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) getActivity()).logOut();
+                MainActivity.launch(getActivity());
+            }
+        });
     }
 }

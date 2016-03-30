@@ -9,14 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hsns.vefinder.R;
-import com.hsns.vefinder.databinding.FragmentMyFriendsBinding;
+import com.hsns.vefinder.databinding.FragmentFriendMgtBinding;
 
 /**
  * Created by SENEY SEAN on 3/29/16.
  */
 public class FriendMgtFragment extends Fragment {
     private static FriendMgtFragment fragment;
-    private FragmentMyFriendsBinding mBinding;
+    private FragmentFriendMgtBinding mBinding;
 
     public FriendMgtFragment() {
     }

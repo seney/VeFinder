@@ -1,5 +1,7 @@
 package com.hsns.vefinder.views.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,12 +28,24 @@ import com.hsns.vefinder.views.fragments.HomeFragment;
 import com.hsns.vefinder.views.fragments.MyFriendsFragment;
 import com.hsns.vefinder.views.fragments.SettingFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends VeBaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView mNavigationView;
+
+    public static void launch(Activity activity) {
+        Intent intent = new Intent(activity, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!isLogin()) {
+            LoginActivity.launch(this);
+            finish();
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,7 +62,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -118,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
     }
 
-    private void loadUserProfile(){
+    private void loadUserProfile() {
         SimpleDraweeView imvProfile = (SimpleDraweeView) mNavigationView.getHeaderView(0).findViewById(R.id.imvProfile);
         Uri imageUri = Uri.parse("http://designdeedee.net/ca2013/sources/quiz1/1.jpg");
         ImageRequest mImageRequest = ImageRequestBuilder.newBuilderWithSource(imageUri).setResizeOptions(new ResizeOptions(100, 100)).setImageType(ImageRequest.ImageType.SMALL).build();
