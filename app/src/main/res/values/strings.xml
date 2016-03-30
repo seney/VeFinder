@@ -9,4 +9,8 @@
     <string name="my_friends">My Friends</string>
     <string name="about">About</string>
     <string name="setting">Setting</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="term_of_service">Term of service</string>
+    <string name="version">Version</string>
+    <string name="version_num">1.0</string>
 </resources>
