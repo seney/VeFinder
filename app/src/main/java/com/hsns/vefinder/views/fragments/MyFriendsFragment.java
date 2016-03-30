@@ -1,4 +1,4 @@
-package com.hsns.vefinder;
+package com.hsns.vefinder.views.fragments;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -13,11 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hsns.vefinder.R;
+import com.hsns.vefinder.adapters.VeFragmentPagerAdapter;
+
 /**
  * Created by SENEY SEAN on 3/29/16.
  */
 public class MyFriendsFragment extends Fragment {
-    private static MyFriendsFragment myFriendsFragment;
+    private static MyFriendsFragment fragment;
     private Activity mActivity;
     private TabLayout mTab;
     private ViewPager mViewPager;
@@ -28,10 +31,10 @@ public class MyFriendsFragment extends Fragment {
     public MyFriendsFragment() {
     }
 
-    public static MyFriendsFragment getMyFriendsFragment() {
-        if (myFriendsFragment == null)
-            myFriendsFragment = new MyFriendsFragment();
-        return myFriendsFragment;
+    public static MyFriendsFragment getFragment() {
+        if (fragment == null)
+            fragment = new MyFriendsFragment();
+        return fragment;
     }
 
     @Nullable
@@ -64,8 +67,8 @@ public class MyFriendsFragment extends Fragment {
 
     private void setUpTabs() {
         mPagerAdapter = new VeFragmentPagerAdapter(getChildFragmentManager());
-        mPagerAdapter.addPage(AboutFragment.getAboutFragment(), "About");
-        mPagerAdapter.addPage(SettingFragment.getSettingFragment(), "Setting");
+        mPagerAdapter.addPage(FriendMgtFragment.getFragment(), "Friends");
+        mPagerAdapter.addPage(FriendRequestFragment.getFragment(), "Request");
         mViewPager.setAdapter(mPagerAdapter);
         mTab.setupWithViewPager(mViewPager);
     }

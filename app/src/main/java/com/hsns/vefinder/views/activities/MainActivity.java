@@ -1,4 +1,4 @@
-package com.hsns.vefinder;
+package com.hsns.vefinder.views.activities;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +15,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.common.ResizeOptions;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.hsns.vefinder.R;
+import com.hsns.vefinder.views.fragments.AboutFragment;
+import com.hsns.vefinder.views.fragments.HomeFragment;
+import com.hsns.vefinder.views.fragments.MyFriendsFragment;
+import com.hsns.vefinder.views.fragments.SettingFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,8 +55,7 @@ public class MainActivity extends AppCompatActivity
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.getMenu().getItem(0).setChecked(true);
-        replaceFragment(HomeFragment.getHomeFragment());
-
+        replaceFragment(HomeFragment.getFragment());
         loadUserProfile();
     }
 
@@ -90,16 +99,16 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             getSupportActionBar().setTitle(R.string.app_name);
-            replaceFragment(new HomeFragment());
+            replaceFragment(HomeFragment.getFragment());
         } else if (id == R.id.nav_my_friends) {
             getSupportActionBar().setTitle(R.string.my_friends);
-            replaceFragment(new MyFriendsFragment());
+            replaceFragment(MyFriendsFragment.getFragment());
         } else if (id == R.id.nav_about) {
             getSupportActionBar().setTitle(R.string.about);
-            replaceFragment(new AboutFragment());
+            replaceFragment(AboutFragment.getFragment());
         } else if (id == R.id.nav_setting) {
             getSupportActionBar().setTitle(R.string.setting);
-            replaceFragment(new SettingFragment());
+            replaceFragment(SettingFragment.getFragment());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -117,7 +126,9 @@ public class MainActivity extends AppCompatActivity
 
     private void loadUserProfile(){
         SimpleDraweeView imvProfile = (SimpleDraweeView) mNavigationView.getHeaderView(0).findViewById(R.id.imvProfile);
-//        imvProfile.setImageURI(Uri.parse("http://www.allmediany.com/bignails/1343917142_blank.jpg"));
-        imvProfile.setImageURI(Uri.parse("http://designdeedee.net/ca2013/sources/quiz1/ma.jpg"));
+        Uri imageUri = Uri.parse("http://designdeedee.net/ca2013/sources/quiz1/1.jpg");
+        ImageRequest mImageRequest = ImageRequestBuilder.newBuilderWithSource(imageUri).setResizeOptions(new ResizeOptions(100, 100)).setImageType(ImageRequest.ImageType.SMALL).build();
+        PipelineDraweeController mController = (PipelineDraweeController) Fresco.newDraweeControllerBuilder().setImageRequest(mImageRequest).build();
+        imvProfile.setController(mController);
     }
 }

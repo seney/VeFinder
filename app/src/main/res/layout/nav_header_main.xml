@@ -16,22 +16,20 @@
         android:id="@+id/imvProfile"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@android:drawable/sym_def_app_icon"
         app:actualImageScaleType="focusCrop"
-        app:placeholderImage="@mipmap/ic_launcher"
         app:roundAsCircle="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Android Studio"
+        android:text="Seney Sean"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="android.studio@android.com" />
+        android:text="seneysean0925@gmail.com" />
 
 </LinearLayout>

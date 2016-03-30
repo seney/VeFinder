@@ -1,4 +1,4 @@
-package com.hsns.vefinder;
+package com.hsns.vefinder.views.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,19 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hsns.vefinder.R;
+
 /**
  * Created by SENEY SEAN on 3/29/16.
  */
 public class SettingFragment extends Fragment {
-    private static SettingFragment settingFragment;
+    private static SettingFragment fragment;
 
     public SettingFragment() {
     }
 
-    public static SettingFragment getSettingFragment() {
-        if (settingFragment == null)
-            settingFragment = new SettingFragment();
-        return settingFragment;
+    public static SettingFragment getFragment() {
+        if (fragment == null)
+            fragment = new SettingFragment();
+        return fragment;
     }
 
     @Nullable
