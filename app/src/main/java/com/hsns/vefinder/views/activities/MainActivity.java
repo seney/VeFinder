@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
@@ -23,6 +24,7 @@ import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.hsns.vefinder.R;
+import com.hsns.vefinder.utils.UserProfile;
 import com.hsns.vefinder.views.fragments.AboutFragment;
 import com.hsns.vefinder.views.fragments.HomeFragment;
 import com.hsns.vefinder.views.fragments.MyFriendsFragment;
@@ -133,9 +135,14 @@ public class MainActivity extends VeBaseActivity
 
     private void loadUserProfile() {
         SimpleDraweeView imvProfile = (SimpleDraweeView) mNavigationView.getHeaderView(0).findViewById(R.id.imvProfile);
-        Uri imageUri = Uri.parse("http://designdeedee.net/ca2013/sources/quiz1/1.jpg");
+        Uri imageUri = Uri.parse(UserProfile.getAvatar());
         ImageRequest mImageRequest = ImageRequestBuilder.newBuilderWithSource(imageUri).setResizeOptions(new ResizeOptions(100, 100)).setImageType(ImageRequest.ImageType.SMALL).build();
         PipelineDraweeController mController = (PipelineDraweeController) Fresco.newDraweeControllerBuilder().setImageRequest(mImageRequest).build();
         imvProfile.setController(mController);
+        imvProfile.getHierarchy().setPlaceholderImage(R.drawable.ic_default_profile);
+//        imvProfile.getHierarchy().setFailureImage(AppCompatActivity.getDrawable(R.drawable.ic_default_profile));
+
+        TextView txvName = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.txvDisplayName);
+        txvName.setText(UserProfile.getDisplayName());
     }
 }
