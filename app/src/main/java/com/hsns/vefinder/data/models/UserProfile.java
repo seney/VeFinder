@@ -1,4 +1,4 @@
-package com.hsns.vefinder.models;
+package com.hsns.vefinder.data.models;
 
 import com.facebook.AccessToken;
 import com.facebook.Profile;

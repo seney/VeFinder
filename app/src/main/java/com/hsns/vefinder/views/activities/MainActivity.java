@@ -24,7 +24,7 @@ import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.hsns.vefinder.R;
-import com.hsns.vefinder.models.UserProfile;
+import com.hsns.vefinder.data.models.UserProfile;
 import com.hsns.vefinder.views.fragments.AboutFragment;
 import com.hsns.vefinder.views.fragments.HomeFragment;
 import com.hsns.vefinder.views.fragments.MyFriendsFragment;
