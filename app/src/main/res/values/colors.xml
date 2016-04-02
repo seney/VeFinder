@@ -9,4 +9,6 @@
     <!--<color name="colorAccent">#FF4081</color>-->
     <color name="tab_normal">#85ffffff</color>
     <color name="tab_selected">#FFFFFF</color>
+    <color name="fill_color">#FFFFFF</color>
+    <color name="stroke_color">#FFFFFF</color>
 </resources>

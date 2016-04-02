@@ -24,7 +24,7 @@ import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.hsns.vefinder.R;
-import com.hsns.vefinder.utils.UserProfile;
+import com.hsns.vefinder.models.UserProfile;
 import com.hsns.vefinder.views.fragments.AboutFragment;
 import com.hsns.vefinder.views.fragments.HomeFragment;
 import com.hsns.vefinder.views.fragments.MyFriendsFragment;
@@ -108,7 +108,7 @@ public class MainActivity extends VeBaseActivity
 
         if (id == R.id.nav_home) {
             getSupportActionBar().setTitle(R.string.app_name);
-            replaceFragment(HomeFragment.getFragment());
+            replaceFragment(new HomeFragment());
         } else if (id == R.id.nav_my_friends) {
             getSupportActionBar().setTitle(R.string.my_friends);
             replaceFragment(MyFriendsFragment.getFragment());
